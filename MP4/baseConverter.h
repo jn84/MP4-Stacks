@@ -5,6 +5,8 @@
 
 using namespace std;
 
+const string digits = "0123456789ABCDEF";
+
 static class BaseConverter
 {
 public:
