@@ -23,5 +23,8 @@
     <ClInclude Include="palindromeTester.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="baseConverter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
