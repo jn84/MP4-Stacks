@@ -31,11 +31,13 @@ private:
     {
         stack<char> charStk;
         string::const_iterator strIter = str.begin();
-        while (*strIter != '#' && strIter != str.end())
+        while (strIter != str.end() && *strIter != '#')
         {
             charStk.push(*strIter);
             strIter++;
         }
+        if (strIter == str.end())
+            return false;
         strIter++;
         while (strIter != str.end())
         {
