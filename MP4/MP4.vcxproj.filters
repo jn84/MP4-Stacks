@@ -26,5 +26,8 @@
     <ClInclude Include="baseConverter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="balancedBraceChecker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
