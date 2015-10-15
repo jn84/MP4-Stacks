@@ -2,6 +2,8 @@
 
 #include <cmath>
 #include <iostream>
+#include <stack>
+#include <string>
 
 using namespace std;
 
@@ -25,20 +27,29 @@ public:
                 cin.clear();
                 cin.ignore(INT_MAX, '\n');
             }
-            if (!base && !number)
+            if (base == 0 && number == 0)
                 break;
+            cout << '\t' << number << " in base " << base
+                << " is " << multiBaseOutput(number, base) << "\n\n";
         }
-
     }
 
 private:
-    static void multibaseOutput(
-        int num, 
-        int b, 
-        ostream& os = cout, 
-        istream& is = cin)
+    static string multiBaseOutput(int num, const int b)
     {
+        stack<char> baseStack;
+        string digits = "0123456789ABCDEF", str = "";
+        do
+        {
+            baseStack.push(digits[num % b]);
+            num /= b;
+        } while (num != 0);
 
+        while (!baseStack.empty())
+        {
+            str += baseStack.top();
+            baseStack.pop();
+        }
+        return str;
     }
-
 };

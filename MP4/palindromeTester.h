@@ -9,20 +9,22 @@ using namespace std;
 static class palindromeTester
 {
 public:
-    static void runPalindromeTests()
+    static void runPalindromeTests(
+        ostream& os = cout,
+        istream& is = cin)
     {
         string input;
         while (true)
         {
-            cout << "Input a string: ";
-            getline(cin, input);
+            os << "Input a string: ";
+            getline(is, input);
             if (input == "")
                 break;
-            cout << input;
+            os << input;
             if (isPalindrome(input))
-                cout << " matches the pattern." << endl << endl;
+                os << " matches the pattern." << endl << endl;
             else
-                cout << " does not match the pattern." << endl << endl;
+                os << " does not match the pattern." << endl << endl;
         }
     }
 
