@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <stack>
+#include <exception>
 
 using namespace std;
 
@@ -17,18 +18,43 @@ public:
         ostream& os = cout,
         istream& is = cin)
     {
-        if (checkBraces("test.txt"))
-            cout << "yes" << endl;
-        else
-            cout << "no" << endl;
+        string inputStr;
+        while (true)
+        {
+            os << "Enter the file name, or 'q' to quit: ";
+            is >> inputStr;
+            if (inputStr == "q" || is.fail())
+                return;
+            try
+            {
+                if (checkBraces("test.txt"))
+                    os << "The symbols in " << inputStr
+                    << " are balanced." << endl;
+                else
+                    os << "The symbols in " << inputStr
+                    << " are NOT balanced." << endl;
+            }
+            catch (exception& e)
+            {
+                os << e.what() << endl;
+                os << "Quitting..." << endl;
+                return;
+            }
+        }
     }
 private:
     static bool checkBraces(const string& fileName)
     {
+        // Files with strings containing any braces, brackets, 
+        // or parentheses will cause a false negative.
+        char temp = ' ';
+        int closeIndex = 0;
         stack<char> braceStk;
-        ifstream inFile(fileName);
-        char temp;
-        int index = 0;
+        ifstream inFile;
+        inFile.open(fileName);
+        if (inFile.fail())
+            throw runtime_error("File " +
+                fileName + " cannot be opened. Aborting");
         while (!inFile.eof())
         {
             temp = inFile.get();
@@ -37,10 +63,11 @@ private:
                 braceStk.push(temp);
                 continue;
             }
-            index = closeBraceChars.find(temp);
-            if (index != string::npos) // found closing brace
+            closeIndex = closeBraceChars.find(temp);
+            if (closeIndex != string::npos) // found closing brace
             {
-                if (openBraceChars.find(braceStk.top()) != index)
+                if (braceStk.empty() || 
+                    openBraceChars.find(braceStk.top()) != closeIndex)
                 {
                     inFile.close();
                     return false;
@@ -49,6 +76,6 @@ private:
             }
         }
         inFile.close();
-        return true;
+        return braceStk.empty();
     }
 };

@@ -22,14 +22,14 @@ public:
             os << "Enter a non-negative decimal number and base " <<
                   "(2 <= B <= 16)" << endl << "or 0 0 to terminate: ";
             is >> number >> base;
-            if (cin.fail())
+            if (is.fail())
             {
-                cin.clear();
-                cin.ignore(INT_MAX, '\n');
+                is.clear();
+                is.ignore(INT_MAX, '\n');
             }
             if (base == 0 && number == 0)
                 break;
-            cout << '\t' << number << " in base " << base
+            os << '\t' << number << " in base " << base
                 << " is " << multiBaseOutput(number, base) << "\n\n";
         }
     }
