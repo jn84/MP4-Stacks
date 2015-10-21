@@ -17,6 +17,7 @@ public:
         istream& is = cin)
     {
         unsigned long long base = 0, number = 0;
+        os << "Base Converter:" << endl;
         while (true)
         {
             os << "Enter a non-negative decimal number and base " <<
@@ -32,6 +33,7 @@ public:
             os << '\t' << number << " in base " << base
                 << " is " << multiBaseOutput(number, base) << "\n\n";
         }
+        os << "Quitting Base Converter..." << endl << endl;
     }
 
 private:

@@ -19,14 +19,15 @@ public:
         istream& is = cin)
     {
         string inputStr;
+        os << "Balanced Brace Checker:" << endl;
         while (true)
         {
             os << "Enter the file name, or 'q' to quit: ";
             is >> inputStr;
-            if (inputStr == "q" || is.fail())
-                return;
             try
             {
+                if (inputStr == "q" || is.fail())
+                    throw runtime_error("Program terminating...");
                 if (checkBraces("test.txt"))
                     os << "The symbols in " << inputStr
                     << " are balanced." << endl;
@@ -37,10 +38,11 @@ public:
             catch (exception& e)
             {
                 os << e.what() << endl;
-                os << "Quitting..." << endl;
+                os << "Quitting Balanced Brace Checker..." << endl << endl;
                 return;
             }
         }
+
     }
 private:
     static bool checkBraces(const string& fileName)
@@ -76,6 +78,6 @@ private:
             }
         }
         inFile.close();
-        return braceStk.empty();
+        return braceStk.empty(); // If not empty, then not balanced
     }
 };

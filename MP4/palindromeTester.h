@@ -14,6 +14,7 @@ public:
         istream& is = cin)
     {
         string input;
+        os << "Palindrome Checker:" << endl;
         while (true)
         {
             os << "Input a string: ";
@@ -26,6 +27,7 @@ public:
             else
                 os << " does not match the pattern." << endl << endl;
         }
+        os << "Quitting Palindrome Checker..." << endl << endl;
     }
 
 private:

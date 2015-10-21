@@ -6,7 +6,7 @@ using namespace std;
 
 void main()
 {
-    //palindromeTester::runPalindromeTests();
-    //BaseConverter::runBaseConverter(cout, cin);
-    balancedBraceChecker::runBraceChecker();
+    palindromeTester::runPalindromeTests(cout, cin);
+    BaseConverter::runBaseConverter(cout, cin);
+    balancedBraceChecker::runBraceChecker(cout, cin);
 }
