@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+//#include <iostream>
 #include <fstream>
 #include <string>
 #include <stack>
@@ -28,7 +28,7 @@ public:
             {
                 if (inputStr == "q" || is.fail())
                     throw runtime_error("Program terminating...");
-                if (checkBraces("test.txt"))
+                if (checkBraces(inputStr))
                     os << "The symbols in " << inputStr
                     << " are balanced." << endl;
                 else
